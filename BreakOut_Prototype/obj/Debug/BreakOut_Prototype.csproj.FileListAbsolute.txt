@@ -1,0 +1,11 @@
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\bin\Debug\BreakOut_Prototype.exe.config
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\bin\Debug\BreakOut_Prototype.exe
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\bin\Debug\BreakOut_Prototype.pdb
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\obj\Debug\BreakOut_Prototype.csproj.AssemblyReference.cache
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\obj\Debug\BreakOut_Prototype.csproj.SuggestedBindingRedirects.cache
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\obj\Debug\BreakOut_Prototype.BreakOutGame.resources
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\obj\Debug\BreakOut_Prototype.Properties.Resources.resources
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\obj\Debug\BreakOut_Prototype.csproj.GenerateResource.cache
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\obj\Debug\BreakOut_Prototype.csproj.CoreCompileInputs.cache
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\obj\Debug\BreakOut_Prototype.exe
+D:\CSharp_Projects\BreakOut_Prototype\BreakOut_Prototype\obj\Debug\BreakOut_Prototype.pdb
