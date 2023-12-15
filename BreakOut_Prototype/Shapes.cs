@@ -20,7 +20,6 @@ namespace BreakOut_Prototype
         public uint color;
         public bool isVisible;
     }
-
     public class Ball : Shapes 
     {
         public float speedx;
@@ -34,7 +33,7 @@ namespace BreakOut_Prototype
             this.height = 12;
             this.speedx = 5;
             this.speedy = -5;
-            this.color = 0xFFD62828;
+            this.color = 0xFFE9C46A;
             this.isVisible = true;
         }
 
@@ -57,13 +56,10 @@ namespace BreakOut_Prototype
             }
             if (posy + height > maxY) 
             {
-                //posy -= speedy;
-                //speedy = -speedy;
                 this.isVisible = false;
             }
         }
     }
-
     public class Paddle : Shapes
     {
         public float speed;
@@ -74,23 +70,52 @@ namespace BreakOut_Prototype
             this.width = 80;
             this.height = 10;
             this.speed = 15;
-            this.color =  0xFFF77F00;
+            this.color =  0xFFE76F51;
             this.isVisible = true;   
         }            
     }
-
     public class Brick : Shapes
     {
+        public bool powerUpBrick;
         public Brick(float posx, float posy)
         { 
             this.posx = posx;
             this.posy = posy;
             this.width = 78;
             this.height = 20;
-            this.color = 0xFFFCBF49;
-            this.isVisible = true;   
+            this.color = 0xFF2A9D8F;
+            this.isVisible = true;
+            this.powerUpBrick = false;
         }
         
     }
+    public class PowerUp : Shapes 
+    {
+        public float speedy;
+        public PowerUp()
+        {
+            this.width = 5;
+            this.height = 5;
+            this.color = 0xFF287271;
+            this.isVisible = false;
+            this.speedy = 3;
+        }
 
+        public void Move() 
+        {
+            if (isVisible) 
+            {
+                posy += speedy;
+            }
+        }
+        public bool CheckColl(Paddle paddle) 
+        {
+            if (isVisible && posy + height >= paddle.posy && posx + width > paddle.posx && posx < paddle.posx + paddle.width) 
+            {
+                isVisible = false;
+                return true;
+            }
+            return false;
+        }
+    }
 }
