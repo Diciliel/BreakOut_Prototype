@@ -87,35 +87,5 @@ namespace BreakOut_Prototype
             this.isVisible = true;
             this.powerUpBrick = false;
         }
-        
-    }
-    public class PowerUp : Shapes 
-    {
-        public float speedy;
-        public PowerUp()
-        {
-            this.width = 5;
-            this.height = 5;
-            this.color = 0xFF287271;
-            this.isVisible = false;
-            this.speedy = 3;
-        }
-
-        public void Move() 
-        {
-            if (isVisible) 
-            {
-                posy += speedy;
-            }
-        }
-        public bool CheckColl(Paddle paddle) 
-        {
-            if (isVisible && posy + height >= paddle.posy && posx + width > paddle.posx && posx < paddle.posx + paddle.width) 
-            {
-                isVisible = false;
-                return true;
-            }
-            return false;
-        }
     }
 }

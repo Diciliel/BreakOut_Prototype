@@ -16,13 +16,9 @@ namespace BreakOut_Prototype
         private List<Brick> bricks;
         Ball ball = new Ball();
         Paddle paddle = new Paddle();
-        PowerUp powerup = new PowerUp();
-        private List<PowerUp> powerups;
         Bitmap canvasBitmap;
         Bitmap workingBitmap;
         Graphics workingGraphics;
-
-        Random rnd = new Random();
 
         bool gameover;
         bool levelUp;
@@ -40,7 +36,6 @@ namespace BreakOut_Prototype
             InitializeComponent();
 
             bricks = new List<Brick>();
-            powerups = new List<PowerUp>();
 
             SetLevel(2);
         }
@@ -52,7 +47,7 @@ namespace BreakOut_Prototype
             gameover = false;
             levelUp = false;
 
-            //Random rnd = new Random();
+            Random rnd = new Random();
 
             ball.posx = rnd.Next(700);
             ball.speedx = rnd.Next(4, 7);
@@ -111,12 +106,6 @@ namespace BreakOut_Prototype
                 Brush brush = new SolidBrush(Color.FromArgb((int)paddle.color));
                 workingGraphics.FillRectangle(brush, new Rectangle(Convert.ToInt32(paddle.posx), Convert.ToInt32(paddle.posy), Convert.ToInt32(paddle.width), Convert.ToInt32(paddle.height)));
             }
-
-            /*if (powerup.isVisible)
-            {
-                Brush brush = new SolidBrush(Color.FromArgb((int)powerup.color));
-                workingGraphics.FillRectangle(brush, new Rectangle(0, 0, 5, 5));
-            }*/
 
             pic_canvas.Image = workingBitmap;
         }
@@ -202,41 +191,6 @@ namespace BreakOut_Prototype
             }            
         }
 
-        /*private void HandleCollision(int i, bool hitHorizontal, bool hitVertical)
-        {
-            bricks[i].isVisible = false;
-            score++;
-
-            if (hitHorizontal)
-            {
-                ball.posy -= ball.speedy;
-                ball.speedy = -ball.speedy;
-            }
-
-            if (hitVertical)
-            {
-                ball.posx -= ball.speedx;
-                ball.speedx = -ball.speedx;
-            }
-        }*/
-
-        /*private void BrickCollision()
-        {
-            for (int i = 0; i < bricks.Count; i++)
-            {
-                if (bricks[i].isVisible)
-                {
-                    bool hitHorizontal = ball.posx + ball.width > bricks[i].posx && ball.posx < bricks[i].posx + bricks[i].width;
-                    bool hitVertical = ball.posy + ball.height > bricks[i].posy + 40 && ball.posy < bricks[i].posy + 40 + bricks[i].height;
-
-                    if (hitHorizontal && hitVertical)
-                    {
-                        HandleCollision(i, hitHorizontal, hitVertical);
-                    }
-                }                
-            }
-        } */
-
         private void GameOver()
         {
             if (ball.isVisible == false)
@@ -273,10 +227,10 @@ namespace BreakOut_Prototype
             {
                 if (bricks[i].isVisible == false && gameover == false && score == bricks.Count)
                 {
+                    lbl_score02.Text = "SCORE: " + score;
                     timer.Stop();
                     lbl_nl.Visible = true;
                     lbl_quit.Visible = true;
-                    lbl_score02.Text = "SCORE: " + score;
                     lbl_score02.Visible = true;
                     levelUp = true;
                 }
@@ -300,8 +254,16 @@ namespace BreakOut_Prototype
 
             score = 0;
             lvl += 1;
-            int level = lvl + 2;
-            SetLevel((int)level);
+            if ( lvl < 5 )
+            {
+                int level = lvl + 2;
+                SetLevel((int)level);
+            }
+            else
+            {
+                timer.Stop();
+                MessageBox.Show("You won!");
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -315,45 +277,6 @@ namespace BreakOut_Prototype
             {
                 paddle.posx += paddle.speed;
             }
-
-            /*for (int i = 0; i < bricks.Count; i++)
-            {
-                bricks[i].powerUpBrick = rnd.NextDouble() < 0.1;
-                powerups.Add(powerup);
-            }
-
-            for (int i = 0; i < bricks.Count; i++)
-            {
-                if (!bricks[i].isVisible) 
-                {                    
-                     powerup.posx = bricks[i].posx;
-                     powerup.posy = bricks[i].posy;
-                     powerup.speedy = 3;
-                     powerup.isVisible = true;
-                     canvasBitmap = new Bitmap(pic_canvas.Width, pic_canvas.Height);
-                     workingBitmap = new Bitmap(canvasBitmap);
-                     workingGraphics = Graphics.FromImage(workingBitmap);
-
-                    if (powerup.isVisible)
-                    {
-                        Brush brush = new SolidBrush(Color.FromArgb((int)powerup.color));
-                        workingGraphics.FillRectangle(brush, new Rectangle(Convert.ToInt32(bricks[i].posx), Convert.ToInt32(bricks[i].posy + 40), 5, 5));
-                    }
-
-                    pic_canvas.Image = workingBitmap;
-                    //powerups.Add(powerup);                    
-                }
-            }
-
-            if(powerup.isVisible == true)
-            {
-                powerup.Move();
-
-                if (powerup.posx + powerup.height == paddle.posx)
-                {
-                    score += 100;
-                }
-            }*/
 
             lbl_score.Text = Convert.ToString(score);
             lbl_level.Text = Convert.ToString(lvl);
