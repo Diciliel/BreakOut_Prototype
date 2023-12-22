@@ -37,7 +37,7 @@ namespace BreakOut_Prototype
 
             bricks = new List<Brick>();
 
-            SetLevel(2);
+            SetLevel(5);
         }
 
         public void SetLevel(int level)
@@ -218,7 +218,7 @@ namespace BreakOut_Prototype
             lbl_quit.Visible = false;
             lbl_retry.Visible = false;
 
-            SetLevel(2);
+            SetLevel(5);
         }
 
         private void LevelUp()
